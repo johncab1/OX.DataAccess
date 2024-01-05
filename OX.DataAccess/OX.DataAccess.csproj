@@ -17,7 +17,7 @@
     <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
     <AssemblyVersion>1.0.0.4</AssemblyVersion>
     <FileVersion>1.0.0.4</FileVersion>
-    <Version>1.0.3</Version>
+    <Version>1.0.4</Version>
     <PackageReleaseNotes>Se agrega conversión de entidades a parámetros Sql</PackageReleaseNotes>
   </PropertyGroup>
 
