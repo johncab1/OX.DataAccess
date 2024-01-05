@@ -11,10 +11,26 @@
     <Description>librería para ejecución de sp</Description>
     <Copyright>MIT</Copyright>
     <PackageIcon>ollin.png</PackageIcon>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <RepositoryUrl>https://dev.azure.com/OllinXikoatl/OX.DataAcces/_git/OX.DataAccess</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
+    <AssemblyVersion>1.0.0.4</AssemblyVersion>
+    <FileVersion>1.0.0.4</FileVersion>
+    <Version>1.0.3</Version>
+    <PackageReleaseNotes>Se agrega conversión de entidades a parámetros Sql</PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>
     <None Include="..\..\..\Users\jonatan\Desktop\ollin.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+    <None Include="..\LICENSE.txt">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+    <None Include="..\README.md">
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
     </None>
