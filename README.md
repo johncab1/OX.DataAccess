@@ -1,4 +1,4 @@
-# OX.DataAccess 2.0.3
+# OX.DataAccess 2.0.5
 Only for MSSQL<br>
 Version notes<br>
 Added support for Decimal type sql parameter

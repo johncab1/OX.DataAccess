@@ -3,13 +3,12 @@ using Microsoft.Data.SqlClient;
 using OX.DataAccess.Utils;
 using System.Data;
 using System.Reflection;
-using System.Reflection.PortableExecutable;
+
 
 namespace OX.DataAccess
 {
-    public static class Data
+    public class Data
     {
-        public static string ConnectionStr = "";
 
         ///<summary>
         ///Execute an stored procedure.
@@ -26,7 +25,7 @@ namespace OX.DataAccess
         ///<param name="body">
         ///function that retrieves the output of the stored procedure.
         ///</param>
-        public static IEnumerable<T> ExecSp<T>(string storedProcedure, SqlParameter[] parameters, Func<SqlDataReader, T> body)
+        public IEnumerable<T> ExecSp<T>(string storedProcedure, SqlParameter[] parameters, string ConnectionStr, Func<SqlDataReader, T> body)
         {
             List<T> results = new List<T>();
 
@@ -60,7 +59,7 @@ namespace OX.DataAccess
         ///<param name="body">
         ///function that retrieves the output of the stored procedure.
         ///</param>
-        public static IEnumerable<T> ExecSp<T>(string storedProcedure, Func<SqlDataReader, T> body)
+        public IEnumerable<T> ExecSp<T>(string storedProcedure, string ConnectionStr, Func<SqlDataReader, T> body)
         {
             List<T> results = new List<T>();
 
@@ -90,7 +89,7 @@ namespace OX.DataAccess
         ///<param name="entity">
         ///Entity class.
         ///</param>
-        public static SqlParameter[] ToSqlParameters<T>(T entity) where T : class
+        public SqlParameter[] ToSqlParameters<T>(T entity) where T : class
         {
             List<SqlParameter> parameters = new List<SqlParameter>();
             PropertyInfo[] properties = typeof(T).GetProperties();
