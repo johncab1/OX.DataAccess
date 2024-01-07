@@ -15,9 +15,9 @@
     <RepositoryUrl>https://dev.azure.com/OllinXikoatl/OX.DataAcces/_git/OX.DataAccess</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
-    <AssemblyVersion>2.0.0.2</AssemblyVersion>
-    <FileVersion>2.0.0.2</FileVersion>
-    <Version>2.0.2</Version>
+    <AssemblyVersion>2.0.0.3</AssemblyVersion>
+    <FileVersion>2.0.0.3</FileVersion>
+    <Version>2.0.3</Version>
     <PackageReleaseNotes>Added support for Decimal type sql parameter</PackageReleaseNotes>
     <PackageTags>Stored Procedure, Datos, Data Execute, Ejecutar</PackageTags>
   </PropertyGroup>

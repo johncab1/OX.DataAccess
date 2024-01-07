@@ -1,4 +1,4 @@
-# OX.DataAccess 2.0.2
+# OX.DataAccess 2.0.3
 Only for MSSQL<br>
 Version notes<br>
 Added support for Decimal type sql parameter
@@ -26,7 +26,7 @@ Example
             });
         }
 
-        Whithout parameters
+        //Whithout parameters
         public void New(Person person)
         {            
             var result = Data.ExecSp<Response>("dbo.StoredProcedureName",
