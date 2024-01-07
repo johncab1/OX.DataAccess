@@ -21,7 +21,8 @@ namespace OX.DataAccess.Utils
                 TypeEnum.Long =>  SqlDbType.BigInt,
                 TypeEnum.Char => SqlDbType.Char,
                 TypeEnum.DateTime => SqlDbType.DateTime,
-                TypeEnum.Bytes => SqlDbType.VarBinary
+                TypeEnum.Bytes => SqlDbType.VarBinary,
+                TypeEnum.Decimal => SqlDbType.Decimal
             };
 
             return dbType;
@@ -42,8 +43,10 @@ namespace OX.DataAccess.Utils
                 typeId = 5;
             if(property.PropertyType.Equals(typeof(DateTime)))
                 typeId = 6;
-            if (property.PropertyType.Equals(typeof(byte[])))
+            if(property.PropertyType.Equals(typeof(byte[])))
                 typeId = 7;
+            if(property.PropertyType.Equals(typeof(decimal)))
+                typeId = 8;
 
             TypeEnum typeEnum = (TypeEnum)typeId;
             return typeEnum;

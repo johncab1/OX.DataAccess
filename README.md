@@ -1,20 +1,7 @@
-# OX.DataAccess 1.0.4
-
+# OX.DataAccess 2.0.2
+Only for MSSQL
 Version notes
--new method is added to execute sp without parameters
--Conversión types supported in parameters sql
-
-C#                  SQL
-int         =>      int
-string      =>      varchar
-bool        =>      bit
-long        =>      bigint
-DateTime    =>      DateTime
-byte[]      =>      varbinary
-
-
-
-
+Added support for Decimal type sql parameter
 
 Example
     
@@ -39,7 +26,7 @@ Example
             });
         }
 
-        Whitout parameters
+        Whithout parameters
         public void New(Person person)
         {            
             var result = Data.ExecSp<Response>("dbo.StoredProcedureName",

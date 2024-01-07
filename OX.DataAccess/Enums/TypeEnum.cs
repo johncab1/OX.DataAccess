@@ -10,7 +10,8 @@ namespace OX.DataAccess.Enums
         Long = 4,
         Char = 5,
         DateTime = 6,
-        Bytes = 7
+        Bytes = 7,
+        Decimal = 8,
 
     }
 }
