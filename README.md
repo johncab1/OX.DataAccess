@@ -1,19 +1,48 @@
 # OX.DataAccess 1.0.4
 
-Implementación de ejemplo
+Version notes
+-new method is added to execute sp without parameters
+-Conversión types supported in parameters sql
 
+C#                  SQL
+int         =>      int
+string      =>      varchar
+bool        =>      bit
+long        =>      bigint
+DateTime    =>      DateTime
+byte[]      =>      varbinary
+
+
+
+
+
+Example
     
     public Class DB
     {
         public DB()
         {
-            Data.OXConnectionStr = MyConnectionString;
+            Data.ConnectionStr = MyConnectionString;
         }
-
+        
         public void New(Person person)
         {            
             var result = Data.ExecSp<Response>("dbo.StoredProcedureName",
-            Data.GetOXParameters(person),  //los parametros se toman de cada propiedad de la entidad person
+            Data.ToSqlParameters(person),  //every property is converted to an sql parameter
+            reader =>
+            {
+                return new Response
+                {
+                    Code = reader["Code"].ToString(),
+                    Message = reader["Message"].ToString()
+                };
+            });
+        }
+
+        Whitout parameters
+        public void New(Person person)
+        {            
+            var result = Data.ExecSp<Response>("dbo.StoredProcedureName",
             reader =>
             {
                 return new Response

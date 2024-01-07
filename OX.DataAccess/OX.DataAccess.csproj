@@ -15,14 +15,20 @@
     <RepositoryUrl>https://dev.azure.com/OllinXikoatl/OX.DataAcces/_git/OX.DataAccess</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
-    <AssemblyVersion>1.0.0.4</AssemblyVersion>
-    <FileVersion>1.0.0.4</FileVersion>
-    <Version>1.0.4</Version>
-    <PackageReleaseNotes>Se agrega conversión de entidades a parámetros Sql</PackageReleaseNotes>
+    <AssemblyVersion>2.0.0.0</AssemblyVersion>
+    <FileVersion>2.0.0.0</FileVersion>
+    <Version>2.0.0</Version>
+    <PackageReleaseNotes>Seagrega compatibilidad con los siguientes tipos de datos en paramétros sql:
+char
+DteTime
+VarBinary
+
+Se agrega método para ejecución de sp sin paramétros</PackageReleaseNotes>
+    <PackageTags>Stored Procedure, Datos, Data Execute, Ejecutar</PackageTags>
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="..\..\..\Users\jonatan\Desktop\ollin.png">
+    <None Include="..\..\..\Users\jonatan\Downloads\ollin.png">
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
     </None>
