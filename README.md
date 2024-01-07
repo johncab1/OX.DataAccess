@@ -7,15 +7,19 @@ Example
     
     public Class DB
     {
-        public DB()
+        private readonly string _connectionStr = null;
+        private Data data;
+
+        public DB(string Connectionstr) 
         {
-            Data.ConnectionStr = MyConnectionString;
+            _connectionStr = Connectionstr;
+            data = new Data();
         }
         
         public void New(Person person)
         {            
-            var result = Data.ExecSp<Response>("dbo.StoredProcedureName",
-            Data.ToSqlParameters(person),  //every property is converted to an sql parameter
+            var result = data.ExecSp<Response>("dbo.StoredProcedureName",
+            data.ToSqlParameters(person),  //every property is converted to an sql parameter
             reader =>
             {
                 return new Response
@@ -29,7 +33,7 @@ Example
         //Whithout parameters
         public void New(Person person)
         {            
-            var result = Data.ExecSp<Response>("dbo.StoredProcedureName",
+            var result = data.ExecSp<Response>("dbo.StoredProcedureName",
             reader =>
             {
                 return new Response
