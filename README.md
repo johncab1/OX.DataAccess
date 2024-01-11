@@ -15,8 +15,25 @@ Example
             data = new Data();
         }
         
+        public void New()
+        {    
+             //getting many rows
+             List<Users> users = ExecSp<ResponseUser>(connectionStr,"ope.spNewUser",
+            reader =>
+            {
+                return new ResponseUser
+                {
+                    Code = reader["Name"].ToString(),
+                    Message = reader["LastName"].ToString()
+                };
+
+            }).ToList();
+            
+        }
+
         public void New(Person person)
-        {            
+        {  
+            //getting 1 row
             Response = ExecSp<Response>(connectionStr,"dbo.StoredProcedureName", data.ToSqlParameters(person),
             reader =>
             {
