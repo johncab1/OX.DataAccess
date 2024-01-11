@@ -102,7 +102,7 @@ namespace OX.DataAccess
                     ParameterName = "@" + property.Name,
                     Direction = ParameterDirection.Input,
                     SqlDbType = Util.ConvertToSqlType(property),
-                    Value = property.GetValue(entity)
+                    Value = property.GetValue(entity) == null ? DBNull.Value : property.GetValue(entity)
                 };
 
                 parameters.Add(parameter);
