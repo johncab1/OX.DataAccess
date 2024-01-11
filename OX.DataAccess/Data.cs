@@ -9,6 +9,36 @@ namespace OX.DataAccess
 {
     public class Data
     {
+        ///<summary>
+        ///Execute an stored procedure.
+        ///</summary>
+        ///<return>
+        ///returns the number of rows affected.
+        ///</return>
+        ///<param name="ConnectionStr">
+        ///connection string.
+        ///</param>
+        ///<param name="storedProcedure">
+        ///Stored procedure name.
+        ///</param>
+        ///<param name="parameters">
+        ///Sql parameters array.
+        ///</param>
+        public int ExecSp(string ConnectionStr, string storedProcedure, SqlParameter[] parameters = null)
+        {
+            int affectedRows;
+            using (SqlConnection connection = new SqlConnection(ConnectionStr))
+            {
+                connection.Open();
+                SqlCommand command = new SqlCommand(storedProcedure, connection);
+                command.CommandType = System.Data.CommandType.StoredProcedure;
+                if (parameters != null)
+                    command.Parameters.AddRange(parameters);
+                affectedRows = command.ExecuteNonQuery();
+                connection.Close();
+            }
+            return affectedRows;
+        }
 
         ///<summary>
         ///Execute an stored procedure.
@@ -16,22 +46,25 @@ namespace OX.DataAccess
         ///<return>
         ///returns the specified response entity
         ///</return>
+        ///<param name="ConnectionStr">
+        ///connection string.
+        ///</param>
         ///<param name="storedProcedure">
         ///Stored procedure name.
-        ///</param>
+        ///</param>       
         ///<param name="parameters">
         ///Sql parameters array.
         ///</param>
         ///<param name="body">
         ///function that retrieves the output of the stored procedure.
         ///</param>
-        public IEnumerable<T> ExecSp<T>(string storedProcedure, SqlParameter[] parameters, string ConnectionStr, Func<SqlDataReader, T> body)
+        public IEnumerable<T> ExecSp<T>(string ConnectionStr, string storedProcedure, SqlParameter[] parameters, Func<SqlDataReader, T> body)
         {
             List<T> results = new List<T>();
 
             using (SqlConnection connection = new SqlConnection(ConnectionStr))
             {
-                connection.Open();               
+                connection.Open();
                 SqlCommand command = new SqlCommand(storedProcedure, connection);
                 command.CommandType = System.Data.CommandType.StoredProcedure;
                 command.Parameters.AddRange(parameters);
@@ -53,13 +86,16 @@ namespace OX.DataAccess
         ///<return>
         ///returns the specified response entity
         ///</return>
+        ///<param name="ConnectionStr">
+        ///connection string.
+        ///</param>
         ///<param name="storedProcedure">
-        ///Stored procedure name.
+        ///Stored procedure name
         ///</param>
         ///<param name="body">
-        ///function that retrieves the output of the stored procedure.
+        ///Function that retrieves the output of the stored procedure.
         ///</param>
-        public IEnumerable<T> ExecSp<T>(string storedProcedure, string ConnectionStr, Func<SqlDataReader, T> body)
+        public IEnumerable<T> ExecSp<T>(string ConnectionStr, string storedProcedure, Func<SqlDataReader, T> body)
         {
             List<T> results = new List<T>();
 
@@ -114,7 +150,5 @@ namespace OX.DataAccess
         }
 
     }
-
-
 
 }
