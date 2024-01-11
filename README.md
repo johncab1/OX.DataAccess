@@ -20,7 +20,7 @@ Example
             Response = ExecSp<Response>(connectionStr,"dbo.StoredProcedureName", data.ToSqlParameters(person),
             reader =>
             {
-                return new ResponseUser
+                return new Response
                 {
                     Code = reader["Code"].ToString(),
                     Message = reader["Message"].ToString()
@@ -31,7 +31,7 @@ Example
         //execute sotered procedure Without parameters
         public void New(Person person)
         {            
-            var result = data.ExecSp<Response>("connectionStr, "dbo.StoredProcedureName",
+            var result = data.ExecSp<Response>(connectionStr, "dbo.StoredProcedureName",
             reader =>
             {
                 return new Response
@@ -39,7 +39,7 @@ Example
                     Code = reader["Code"].ToString(),
                     Message = reader["Message"].ToString()
                 };
-            });
+            }).FirstOrDefault();
         }
 
         //execute stored procedure without data response, Sql parameters are optional
