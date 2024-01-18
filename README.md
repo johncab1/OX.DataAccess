@@ -1,30 +1,23 @@
-# OX.DataAccess 2.0.8 Only for MSSQL
+# OX.DataAccess 2.0.10 Only for MSSQL
 
 
 
 Example
     
     public Class DB
-    {
-        private readonly string connectionStr;
-        private Data data;
-
-        public DB(string Connectionstr) 
-        {
-            connectionStr = Connectionstr;
-            data = new Data();
-        }
-        
-        public void New()
+    {        
+    
+        public void getAll()
         {    
              //getting many rows
-             List<Users> users = ExecSp<ResponseUser>(connectionStr,"ope.spNewUser",
+             List<Users> users = ExecSp<ResponseUser>(connectionStr,"ope.StoredProcedureName",
             reader =>
             {
                 return new ResponseUser
                 {
-                    Code = reader["Name"].ToString(),
-                    Message = reader["LastName"].ToString()
+                    Name = reader["Name"].ToString(),
+                    LastName = reader["LastName"].ToString()
+                    age = Convert.ToInt32(reader["age"].ToString())
                 };
 
             }).ToList();
