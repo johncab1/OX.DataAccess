@@ -40,6 +40,42 @@ namespace OX.DataAccess
             return affectedRows;
         }
 
+
+        ///<summary>
+        ///Execute an stored procedure.
+        ///</summary>
+        ///<return>
+        ///returns the number of rows affected.
+        ///</return>
+        ///<param name="ConnectionStr">
+        ///connection string.
+        ///</param>
+        ///<param name="storedProcedure">
+        ///Stored procedure name.
+        ///</param>
+        ///<param name="parameters">
+        ///Sql parameters array.
+        ///</param>
+        ///<param name="dataSet">
+        ///DataSet returned ny reference
+        ///</param>
+        public DataSet ExecSp(string ConnectionStr, string storedProcedure, SqlParameter[] parameters, ref DataSet dataSet)
+        {            
+            using (SqlConnection connection = new SqlConnection(ConnectionStr))
+            {
+                connection.Open();
+                SqlCommand command = new SqlCommand(storedProcedure, connection);
+                command.CommandType = System.Data.CommandType.StoredProcedure;
+                if (parameters != null)
+                    command.Parameters.AddRange(parameters);
+                SqlDataAdapter adapter = new SqlDataAdapter(command);
+                adapter.Fill(dataSet);
+                connection.Close();
+            }
+
+            return dataSet;
+        }
+
         ///<summary>
         ///Execute an stored procedure.
         ///</summary>

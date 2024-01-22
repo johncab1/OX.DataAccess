@@ -15,10 +15,10 @@
     <RepositoryUrl>https://github.com/johncab1/OX.DataAccess</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
-    <AssemblyVersion>2.0.1.0</AssemblyVersion>
-    <FileVersion>2.0.1.0</FileVersion>
-    <Version>2.1.0</Version>
-    <PackageReleaseNotes>Microsoft.Data.SqlClient updated to 5.1.4</PackageReleaseNotes>
+    <AssemblyVersion>2.0.1.2</AssemblyVersion>
+    <FileVersion>2.0.1.2</FileVersion>
+    <Version>2.1.2</Version>
+    <PackageReleaseNotes>support to execute stored procedures that return 2 or more data sets</PackageReleaseNotes>
     <PackageTags>Stored Procedure, Datos, Data Execute, Ejecutar</PackageTags>
   </PropertyGroup>
 

@@ -1,4 +1,4 @@
-# OX.DataAccess 2.0.10 Only for MSSQL
+# OX.DataAccess 2.1.2 Only for MSSQL
 
 
 
@@ -58,7 +58,18 @@ Example
             int query = ExecSp(connectionStr, "dbo.StoredProcedureName");  //returns the number of rows affected          
         }
 
+        //When stored procedure returns 2 or more data sets
+        public void New()
+        {
+            DataSet ds;
+            ExecSp(_connectionStr, "dbo.StoredProcedureName", data.ToSqlParameters(entity), ref ds);
+        }
+
     }
+
+    
+
+
 
     //Conversion types properties to SqlParameter (C# to SQL)
     class Person
