@@ -15,10 +15,10 @@
     <RepositoryUrl>https://github.com/johncab1/OX.DataAccess</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
-    <AssemblyVersion>2.0.1.2</AssemblyVersion>
-    <FileVersion>2.0.1.2</FileVersion>
-    <Version>2.1.2</Version>
-    <PackageReleaseNotes>support to execute stored procedures that return 2 or more data sets</PackageReleaseNotes>
+    <AssemblyVersion>2.0.1.3</AssemblyVersion>
+    <FileVersion>2.0.1.3</FileVersion>
+    <Version>2.1.3</Version>
+    <PackageReleaseNotes>Added a method to convert a DataTable to Entity</PackageReleaseNotes>
     <PackageTags>Stored Procedure, Datos, Data Execute, Ejecutar</PackageTags>
   </PropertyGroup>
 

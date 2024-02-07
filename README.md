@@ -1,4 +1,4 @@
-# OX.DataAccess 2.1.2 Only for MSSQL
+# OX.DataAccess 2.1.3 Only for MSSQL
 
 
 
@@ -59,10 +59,24 @@ Example
         }
 
         //When stored procedure returns 2 or more data sets
-        public void New()
+        public void GetData()
         {
             DataSet ds;
             ExecSp(_connectionStr, "dbo.StoredProcedureName", data.ToSqlParameters(entity), ref ds);
+
+
+            //
+            employes  = data.ToEntity<Employe>(ds,0,
+             reader =>
+             {
+                 return new Employe
+                 {                     
+                     Name = reader["Name"].ToString(),
+                     LastName = reader["LastName"].ToString(),
+                     Department = reader["Department"].ToString(),
+
+                 };
+             }).ToList();
         }
 
     }

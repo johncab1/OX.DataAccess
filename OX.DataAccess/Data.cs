@@ -42,7 +42,7 @@ namespace OX.DataAccess
 
 
         ///<summary>
-        ///Execute an stored procedure.
+        ///Execute an stored procedure and returns the result in a DataSet.
         ///</summary>
         ///<return>
         ///returns the number of rows affected.
@@ -57,9 +57,9 @@ namespace OX.DataAccess
         ///Sql parameters array.
         ///</param>
         ///<param name="dataSet">
-        ///DataSet returned ny reference
+        ///DataSet returned by reference
         ///</param>
-        public DataSet ExecSp(string ConnectionStr, string storedProcedure, SqlParameter[] parameters, ref DataSet dataSet)
+        public void ExecSp(string ConnectionStr, string storedProcedure, SqlParameter[] parameters, ref DataSet dataSet)
         {            
             using (SqlConnection connection = new SqlConnection(ConnectionStr))
             {
@@ -72,10 +72,37 @@ namespace OX.DataAccess
                 adapter.Fill(dataSet);
                 connection.Close();
             }
-
-            return dataSet;
+            
         }
 
+        ///<summary>
+        ///Execute an stored procedure and returns the result in a DataSet.
+        ///</summary>
+        ///<return>
+        ///returns the number of rows affected.
+        ///</return>
+        ///<param name="ConnectionStr">
+        ///connection string.
+        ///</param>
+        ///<param name="storedProcedure">
+        ///Stored procedure name.
+        ///</param>
+        ///<param name="dataSet">
+        ///DataSet returned by reference
+        ///</param>
+        public void ExecSp(string ConnectionStr, string storedProcedure, ref DataSet dataSet)
+        {
+            using (SqlConnection connection = new SqlConnection(ConnectionStr))
+            {
+                connection.Open();
+                SqlCommand command = new SqlCommand(storedProcedure, connection);
+                command.CommandType = System.Data.CommandType.StoredProcedure;
+                SqlDataAdapter adapter = new SqlDataAdapter(command);
+                adapter.Fill(dataSet);
+                connection.Close();
+            }
+
+        }
         ///<summary>
         ///Execute an stored procedure.
         ///</summary>
@@ -182,6 +209,38 @@ namespace OX.DataAccess
             }
 
             return parameters.ToArray();
+
+        }
+
+
+        ///<summary>
+        ///converts to entity a DataSet.
+        ///</summary>
+        ///<param name="dataSet">
+        ///DataSet recived from DB
+        ///</param>
+        ///<param name="tableNumber">
+        ///Table number of DataSet
+        ///</param>
+        ///<param name="body">
+        ///Function that retrieves the output of the DataSet.
+        ///</param>
+        public IEnumerable<T> ToEntity<T>(DataSet dataSet, int tableNumber, Func<DataTableReader, T> body) where T : class
+        {
+
+            List<T> results = new List<T>();
+
+            using (DataTableReader reader = dataSet.Tables[tableNumber].CreateDataReader())
+            {
+
+                while (reader.Read())
+                {
+                    results.Add(body(reader));
+                }
+                reader.Close();
+            }
+
+            return results;
 
         }
 
