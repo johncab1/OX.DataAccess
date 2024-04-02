@@ -41,7 +41,7 @@ namespace OX.DataAccess.Utils
                 typeId = 4;
             if(property.PropertyType.Equals(typeof(char)))
                 typeId = 5;
-            if(property.PropertyType.Equals(typeof(DateTime)))
+            if(property.PropertyType.Equals(typeof(DateTime)) || property.PropertyType.Equals(typeof(DateTime?)))
                 typeId = 6;
             if(property.PropertyType.Equals(typeof(byte[])))
                 typeId = 7;
